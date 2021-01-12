@@ -17,7 +17,7 @@ const saveToCache = (req, res, next) => {
         }    
         if (typeof chunks[0] !== 'string' && chunks[0].toString('utf8') !== 'OK' && res.statusCode !== 404 && res.statusCode !== 500){
             let body = Buffer.concat(chunks).toString('utf8');
-            memcached.set(productId, body, 3600, (err) => {
+            memcached.set(productId, body, 86400, (err) => {
                 if (err){
                     console.log('Error caching data: ', err)
                 };
