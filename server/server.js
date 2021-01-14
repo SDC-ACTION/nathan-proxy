@@ -9,9 +9,9 @@ const PORT = 3000;
 
 app.use('/api/reviews/:product_id', cache);
 
-app.use(createProxyMiddleware('/api', {target: 'http://localhost:3001', changeOrigin: true}));
+app.use(createProxyMiddleware('/api', {target: 'http://54.67.19.225:3001', changeOrigin: true}));
 
-app.use(createProxyMiddleware('/products', {target: 'http://localhost:3001', changeOrigin: true}));
+app.use(createProxyMiddleware('/products', {target: 'http://54.67.19.225:3001', changeOrigin: true}));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 
