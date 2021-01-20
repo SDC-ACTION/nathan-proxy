@@ -9,9 +9,9 @@ const PORT = 3000;
 
 app.use('/api/reviews/:product_id', cache);
 
-app.use(createProxyMiddleware('/api', {target: 'http://54.153.80.4', changeOrigin: true}));
+app.use(createProxyMiddleware('/api', {target: 'http://localhost:3001', changeOrigin: true}));
 
-app.get(createProxyMiddleware('/products', {target: 'http://54.153.80.4', changeOrigin: true}));
+//app.get(createProxyMiddleware('/products', {target: 'http://54.153.80.4', changeOrigin: true}));
 
 app.use('/loaderio-ca39ede8c31fb004501e2f209dfcdad5/', (req, res) => {
   res.sendFile(path.join(__dirname, '../token.txt'));
