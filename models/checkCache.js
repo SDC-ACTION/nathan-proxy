@@ -18,7 +18,9 @@ const checkCache = (req, res, next) => {
             newCount++;
             process.stdout.write(`req handled by cache: ${cacheCount}`);
             process.stdout.write(` req handled by service: ${newCount}\r`);
-            parseResBody(req, res, next);
+            if (res.statusCode !== 404 && res.statusCode !== 500){
+                parseResBody(req, res, next);
+            }
         }
     });
 };

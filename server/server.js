@@ -9,11 +9,11 @@ const PORT = 3000;
 
 app.use('/api/reviews/:product_id', cache);
 
-app.use(createProxyMiddleware('/api', {target: 'http://54.67.19.225:3001', changeOrigin: true}));
+app.use(createProxyMiddleware('/api', {target: 'http://54.153.80.4', changeOrigin: true}));
 
-//app.use(createProxyMiddleware('/products', {target: 'http://54.67.19.225:3001', changeOrigin: true}));
+app.get(createProxyMiddleware('/products', {target: 'http://54.153.80.4', changeOrigin: true}));
 
-app.use('/loaderio-f7b8e82e72ffb51e0715b32fb34eff6c/', (req, res) => {
+app.use('/loaderio-ca39ede8c31fb004501e2f209dfcdad5/', (req, res) => {
   res.sendFile(path.join(__dirname, '../token.txt'));
 });
 
