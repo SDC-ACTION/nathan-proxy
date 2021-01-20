@@ -16,12 +16,14 @@ const parseResBody = (req, res, next) => {
       if (chunk){
           chunks.push(chunk);
       }
-      resBody = JSON.parse(Buffer.concat(chunks));
-      if (resBody.reviews) {
-        saveToCache(req.params.product_id, resBody);
-      }
-      if (resBody.rows) {
-        deleteFromCache(resBody.rows[0].product_id, res);
+      if (Buffer.concat(chunks).length > 0) {
+         resBody = JSON.parse(Buffer.concat(chunks)); 
+        if (resBody.reviews) {
+            saveToCache(req.params.product_id, resBody);
+          }
+          if (resBody.rows) {
+            deleteFromCache(resBody.rows[0].product_id, res);
+          }
       }
       oldEnd.apply(res, arguments);
   };
